@@ -1,5 +1,5 @@
 <template>
-	<v-container> 
+	<v-container>
 		<v-card :color="computedColor" class="mx-auto" width=400>
 			<v-card-title class="justify-center">
 				Irradiance for Stardust
@@ -9,8 +9,36 @@
 			</v-card-text>
 			<v-overlay absolute :value="$apollo.loading">
 				<v-progress-circular
-					indeterminate
-					size="64"
+						indeterminate
+						size="64"
+				></v-progress-circular>
+			</v-overlay>
+		</v-card>
+		<v-card :color="computedColor" class="mx-auto" width=400>
+			<v-card-title class="justify-center">
+				Irradiance for Shanghai
+			</v-card-title>
+			<v-card-text class="text-center text-h5">
+				{{shanghaiIrradiance}}
+			</v-card-text>
+			<v-overlay absolute :value="$apollo.loading">
+				<v-progress-circular
+						indeterminate
+						size="64"
+				></v-progress-circular>
+			</v-overlay>
+		</v-card>
+		<v-card :color="computedColor" class="mx-auto" width=400>
+			<v-card-title class="justify-center">
+				Irradiance for Dubai
+			</v-card-title>
+			<v-card-text class="text-center text-h5">
+				{{dubaiIrradiance}}
+			</v-card-text>
+			<v-overlay absolute :value="$apollo.loading">
+				<v-progress-circular
+						indeterminate
+						size="64"
 				></v-progress-circular>
 			</v-overlay>
 		</v-card>
@@ -18,13 +46,44 @@
 </template>
 
 <script>
-import IrradianceQuery from "@/graphql/IrradianceQuery"
+import { API } from '@aws-amplify/api';
+import * as queries from '@/graphql/queries';
+import gql from 'graphql-tag';
+
 
 export default {
 	name: "HelloWorld",
 	data: () => ({
-		irradiance: -1
+		irradiance: -1,
+		shanghaiIrradiance: -1,
+		dubaiIrradiance: -1
 	}),
+	async created() {
+		this.getIrradiance();
+		this.getDubaiIrradiance();
+	},
+	methods: {
+		async getIrradiance() {
+			const result = await API.graphql({
+				query: queries.getIrradianceDataFor,
+				variables: {
+					lat: 33.4090,
+					lon: -111.8685
+				}
+			})
+			this.irradiance = result.data.getIrradianceDataFor;
+		},
+		async getDubaiIrradiance() {
+			const result = await this.$apollo.query({
+				query: gql(queries.getIrradianceDataFor),
+				variables: {
+					lat: 25.2048,
+					lon: 55.2708
+				}
+			})
+			this.dubaiIrradiance = result.data.getIrradianceDataFor;
+		}
+	},
 	computed: {
 		computedColor: function() {
 			var irradiance = this.irradiance
@@ -35,12 +94,13 @@ export default {
 		}
 	},
 	apollo: {
-		irradiance: {
-			query: IrradianceQuery,
+		shanghaiIrradiance: {
+			query: gql(queries.getIrradianceDataFor),
 			variables: {
-				lat: 33.4090,
-				lon: -111.8685
-			}
+				lat: 31.158256,
+				lon: 121.6992
+			},
+			update: data => data.getIrradianceDataFor
 		}
 	}
 };

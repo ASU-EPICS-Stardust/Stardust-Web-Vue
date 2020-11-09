@@ -8,7 +8,6 @@
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
-import IrradianceQuery from "@/graphql/IrradianceQuery"
 
 export default {
 	name: "Home",
@@ -19,15 +18,6 @@ export default {
 		return {
 			irradiance: -1
 		};
-	},
-	apollo: {
-		irradiance: {
-			query: IrradianceQuery,
-			variables: {
-				lat: 33.4090,
-				lon: -111.8685
-			}
-		}
 	}
 };
 </script>

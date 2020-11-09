@@ -1,13 +1,21 @@
 import Vue from "vue";
-import AWSAppSyncClient from "aws-appsync";
+import AWSAppSyncClient, {AUTH_TYPE} from "aws-appsync";
 import VueApollo from "vue-apollo";
+import Amplify from "@aws-amplify/core";
+import aws_exports from "@/aws-exports";
+import {Auth} from "@aws-amplify/auth";
 
+// Set up Amplify
+Amplify.configure(aws_exports);
+Auth.configure(aws_exports);
+
+// Set up AppSync Client
 const config = {
-	url: process.env.VUE_APP_AWS_APPSYNC_ENDPOINT,
-	region: process.env.VUE_APP_AWS_APPSYNC_REGION,
+	url: aws_exports.aws_appsync_graphqlEndpoint,
+	region: aws_exports.aws_appsync_region,
 	auth: {
-		type: process.env.VUE_APP_AWS_APPSYNC_AUTH_TYPE,
-		apiKey: process.env.VUE_APP_AWS_APPSYNC_API_KEY
+		type: AUTH_TYPE.AMAZON_COGNITO_USER_POOLS,
+		jwtToken: async () => (await Auth.currentSession()).getIdToken().getJwtToken(),
 	}
 };
 const options = {

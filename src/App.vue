@@ -1,10 +1,13 @@
 <template>
-	<v-app>
-		<NavBar />
-		<v-main>
-			<HelloWorld />
-		</v-main>
-	</v-app>
+  <amplify-authenticator>
+    <v-app>
+      <NavBar />
+      <v-main>
+        <HelloWorld />
+      </v-main>
+    </v-app>
+    <amplify-sign-out></amplify-sign-out>
+  </amplify-authenticator>
 </template>
 
 <script>

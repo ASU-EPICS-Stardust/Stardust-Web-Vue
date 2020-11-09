@@ -1,6 +1,7 @@
 import Vue from "vue";
 import App from "@/App.vue";
 import apolloProvider from "@/appsync";
+import '@aws-amplify/ui-vue';
 import router from './router'
 import store from './store'
 import vuetify from './plugins/vuetify';

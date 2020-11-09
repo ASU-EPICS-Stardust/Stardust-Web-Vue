@@ -1,0 +1,7 @@
+# this is an auto generated file. This will be overwritten
+query GetIrradianceDataFor($lat: Float, $lon: Float) {
+  getIrradianceDataFor(lat: $lat, lon: $lon)
+}
+query CalculateDegradation($panelInfo: PanelInformation) {
+  calculateDegradation(panelInfo: $panelInfo)
+}
