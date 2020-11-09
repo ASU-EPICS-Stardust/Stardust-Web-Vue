@@ -86,8 +86,8 @@ export default {
 	},
 	computed: {
 		computedColor: function() {
-			var irradiance = this.irradiance
-			if (irradiance == -1) {
+			const irradiance = this.irradiance;
+			if (irradiance === -1) {
 				return "yellow lighten-4"
 			}
 			return "green lighten-3"
