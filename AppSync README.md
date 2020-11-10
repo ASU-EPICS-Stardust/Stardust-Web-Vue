@@ -1,5 +1,5 @@
 # AppSync GraphQL Schema
-For getting the appsync graph ql schema down from appsync into this project, use  the following commands
+For getting the appsync graph ql schema down from appsync into this project, use the following commands
 
 The following commands download the introspection schema from AppSync and then generate typescript types for the queries to be used in this project.
 Make sure to replace the API ID with the actual API ID of the AppSync API you want to use. Run these in the project root.

@@ -7,9 +7,9 @@ module.exports = {
       "awsProfile": "default",
       "overrideEndpoint": false,
       "region": "us-east-2",
-      "bucket": "stardust-pv-website",
+      "bucket": "stardust-website-bucket",
       "createBucket": false,
-      "staticHosting": true,
+      "staticHosting": false,
       "staticIndexPage": "index.html",
       "staticErrorPage": "index.html",
       "assetPath": "dist",
@@ -18,6 +18,8 @@ module.exports = {
       "acl": "public-read",
       "pwa": false,
       "enableCloudfront": false,
+      // "cloudFrontId": "dyy2o3vaeht0p",
+      // "cloudFrontMatchers": "/*",
       "pluginVersion": "4.0.0-rc3",
       "uploadConcurrency": 5
     }
