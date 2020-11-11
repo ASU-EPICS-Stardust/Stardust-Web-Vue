@@ -6,8 +6,8 @@ Make sure to replace the API ID with the actual API ID of the AppSync API you wa
 ```
 mkdir -p src/graphql
 aws appsync get-introspection-schema --api-id ti3r6iyhbfdfrfcpv5ddmm7giu --format JSON --include-directives src/graphql/schema.json
-amplify-graphql-docs-generator --schema "src/graphql/schema.json" --output "src/graphql/" --separateFiles --language typescript
-amplify-graphql-docs-generator --schema "src/graphql/schema.json" --output "src/graphql/operations.graphql"
-amplify-graphql-types-generator "src/graphql/operations.graphql" --schema "src/graphql/schema.json" --target "typescript" --output "src/graphql/API.ts" --add-typename true
+./node_modules/.bin/amplify-graphql-docs-generator --schema "src/graphql/schema.json" --output "src/graphql/" --separateFiles --language typescript
+./node_modules/.bin/amplify-graphql-docs-generator --schema "src/graphql/schema.json" --output "src/graphql/operations.graphql"
+./node_modules/.bin/amplify-graphql-types-generator "src/graphql/operations.graphql" --schema "src/graphql/schema.json" --target "typescript" --output "src/graphql/API.ts" --add-typename true
 ```
 
