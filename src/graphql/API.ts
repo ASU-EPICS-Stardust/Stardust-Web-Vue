@@ -34,6 +34,15 @@ export type GetIrradianceDataForQuery = {
   getIrradianceDataFor: number | null,
 };
 
+export type GetAprsIrradianceForQueryVariables = {
+  lat?: number | null,
+  lon?: number | null,
+};
+
+export type GetAprsIrradianceForQuery = {
+  getAprsIrradianceFor: number | null,
+};
+
 export type CalculateDegradationQueryVariables = {
   panelInfo?: PanelInformation | null,
 };

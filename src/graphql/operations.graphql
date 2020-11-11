@@ -2,6 +2,9 @@
 query GetIrradianceDataFor($lat: Float, $lon: Float) {
   getIrradianceDataFor(lat: $lat, lon: $lon)
 }
+query GetAprsIrradianceFor($lat: Float, $lon: Float) {
+  getAprsIrradianceFor(lat: $lat, lon: $lon)
+}
 query CalculateDegradation($panelInfo: PanelInformation) {
   calculateDegradation(panelInfo: $panelInfo)
 }
