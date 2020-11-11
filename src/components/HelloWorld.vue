@@ -65,13 +65,13 @@ export default {
 	methods: {
 		async getIrradiance() {
 			const result = await API.graphql({
-				query: queries.getIrradianceDataFor,
+				query: queries.getAprsIrradianceFor,
 				variables: {
 					lat: 33.4090,
 					lon: -111.8685
 				}
 			})
-			this.irradiance = result.data.getIrradianceDataFor;
+			this.irradiance = result.data.getAprsIrradianceFor;
 		},
 		async getDubaiIrradiance() {
 			const result = await this.$apollo.query({
