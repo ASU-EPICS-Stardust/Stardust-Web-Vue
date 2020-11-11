@@ -41,6 +41,36 @@
           "deprecationReason" : null,
           "directives" : [ ]
         }, {
+          "name" : "getAprsIrradianceFor",
+          "description" : null,
+          "args" : [ {
+            "name" : "lat",
+            "description" : null,
+            "type" : {
+              "kind" : "SCALAR",
+              "name" : "Float",
+              "ofType" : null
+            },
+            "defaultValue" : null
+          }, {
+            "name" : "lon",
+            "description" : null,
+            "type" : {
+              "kind" : "SCALAR",
+              "name" : "Float",
+              "ofType" : null
+            },
+            "defaultValue" : null
+          } ],
+          "type" : {
+            "kind" : "SCALAR",
+            "name" : "Float",
+            "ofType" : null
+          },
+          "isDeprecated" : false,
+          "deprecationReason" : null,
+          "directives" : [ ]
+        }, {
           "name" : "calculateDegradation",
           "description" : null,
           "args" : [ {

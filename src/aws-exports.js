@@ -24,8 +24,12 @@ const awsmobile = {
                 "openid",
                 "aws.cognito.signin.user.admin"
             ],
-            "redirectSignIn": "http://localhost:8080/",
-            "redirectSignOut": "http://localhost:8080/",
+            // TODO: Put these into env files
+            // Should use the actual URLs for deployment to S3, but should use localhost for local development
+            // "redirectSignIn": "https://dyy2o3vaeht0p.cloudfront.net",
+            // "redirectSignOut": "https://dyy2o3vaeht0p.cloudfront.net",
+            "redirectSignIn": "http://localhost:8080",
+            "redirectSignOut": "http://localhost:8080",
             "responseType": "code"
         }
     }

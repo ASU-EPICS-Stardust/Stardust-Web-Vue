@@ -1,14 +1,10 @@
 <template>
-	<amplify-authenticator username-alias="email">
-		<amplify-sign-up slot="sign-up" username-alias="email" :form-fields.prop="formFields"></amplify-sign-up>
-		<v-app>
-			<NavBar />
-			<v-main>
-				<HelloWorld />
-			</v-main>
-		</v-app>
-		<amplify-sign-out></amplify-sign-out>
-	</amplify-authenticator>
+	<v-app>
+		<NavBar />
+		<v-main>
+			<HelloWorld />
+		</v-main>
+	</v-app>
 </template>
 
 <script>

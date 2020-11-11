@@ -7,6 +7,11 @@ export const getIrradianceDataFor = /* GraphQL */ `
     getIrradianceDataFor(lat: $lat, lon: $lon)
   }
 `;
+export const getAprsIrradianceFor = /* GraphQL */ `
+  query GetAprsIrradianceFor($lat: Float, $lon: Float) {
+    getAprsIrradianceFor(lat: $lat, lon: $lon)
+  }
+`;
 export const calculateDegradation = /* GraphQL */ `
   query CalculateDegradation($panelInfo: PanelInformation) {
     calculateDegradation(panelInfo: $panelInfo)
