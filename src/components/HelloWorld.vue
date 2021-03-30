@@ -6,7 +6,7 @@
 			</v-card-title>
 			<v-card-text class="text-center text-h5">
 				{{irradiance}}
-			</v-card-text>
+			</v-card-text> 
 			<v-overlay absolute :value="$apollo.loading">
 				<v-progress-circular
 						indeterminate
