@@ -42,7 +42,7 @@
 				></v-progress-circular>
 			</v-overlay>
 		</v-card>
-		<v-card v-if="navigator.geolocation" :color="computedColor" class="mx-auto" width=400>
+		<v-card :color="computedColor" class="mx-auto" width=400>
 			<v-card-title class="justify-center">
 				Irradiance for Current Location
 			</v-card-title>
@@ -76,7 +76,9 @@ export default {
 	async created() {
 		this.getIrradiance();
 		this.getDubaiIrradiance();
-		if (navigator.geolocation) {
+	},
+	async mounted() {
+		if (window.navigator.geolocation) {
 			this.getCurrentIrradiance()
 		}
 	},
@@ -102,7 +104,7 @@ export default {
 			this.dubaiIrradiance = result.data.getIrradianceDataFor;
 		},
 		async getCurrentIrradiance() {
-			navigator.geolocation.getCurrentPosition(async position => {
+			window.navigator.geolocation.getCurrentPosition(async position => {
 				const result = await this.$apollo.query({
 					query: gql(queries.getIrradianceDataFor),
 					variables: {
