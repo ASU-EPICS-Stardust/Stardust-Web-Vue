@@ -42,6 +42,20 @@
 				></v-progress-circular>
 			</v-overlay>
 		</v-card>
+		<v-card v-if="navigator.geolocation" :color="computedColor" class="mx-auto" width=400>
+			<v-card-title class="justify-center">
+				Irradiance for Current Location
+			</v-card-title>
+			<v-card-text class="text-center text-h5">
+				{{currentIrradiance}}
+			</v-card-text>
+			<v-overlay absolute :value="$apollo.loading">
+				<v-progress-circular
+						indeterminate
+						size="64"
+				></v-progress-circular>
+			</v-overlay>
+		</v-card>
 	</v-container>
 </template>
 
@@ -56,11 +70,15 @@ export default {
 	data: () => ({
 		irradiance: -1,
 		shanghaiIrradiance: -1,
-		dubaiIrradiance: -1
+		dubaiIrradiance: -1,
+		currentIrradiance: -1,
 	}),
 	async created() {
 		this.getIrradiance();
 		this.getDubaiIrradiance();
+		if (navigator.geolocation) {
+			this.getCurrentIrradiance()
+		}
 	},
 	methods: {
 		async getIrradiance() {
@@ -82,6 +100,18 @@ export default {
 				}
 			})
 			this.dubaiIrradiance = result.data.getIrradianceDataFor;
+		},
+		async getCurrentIrradiance() {
+			navigator.geolocation.getCurrentPosition(async position => {
+				const result = await this.$apollo.query({
+					query: gql(queries.getIrradianceDataFor),
+					variables: {
+						lat: position.latitude,
+						lon: position.longitude
+					}
+				})
+				this.currentIrradiance = result.data.getIrradianceDataFor;
+			})
 		}
 	},
 	computed: {
