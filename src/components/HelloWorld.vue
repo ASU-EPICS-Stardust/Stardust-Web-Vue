@@ -42,7 +42,7 @@
 				></v-progress-circular>
 			</v-overlay>
 		</v-card>
-		<v-card v-if="navigator.geolocation" :color="computedColor" class="mx-auto" width=400>
+		<v-card :color="computedColor" class="mx-auto" width=400>
 			<v-card-title class="justify-center">
 				Irradiance for Current Location
 			</v-card-title>
@@ -76,6 +76,8 @@ export default {
 	async created() {
 		this.getIrradiance();
 		this.getDubaiIrradiance();
+	},
+	async mounted() {
 		if (navigator.geolocation) {
 			this.getCurrentIrradiance()
 		}
