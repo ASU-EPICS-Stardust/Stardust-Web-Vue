@@ -90,7 +90,7 @@ export default {
 					lat: 33.4090,
 					lon: -111.8685
 				}
-			})
+			}) //test
 			this.irradiance = result.data.getAprsIrradianceFor;
 		},
 		async getDubaiIrradiance() {
